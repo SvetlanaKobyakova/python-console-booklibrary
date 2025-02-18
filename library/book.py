@@ -100,7 +100,8 @@ class Book:
                 }
         return data
 
-    def from_dict(self, book_data):
+    @classmethod
+    def from_dict(cls, book_data):
         book = Book(
             author=book_data["author"],
             title=book_data["title"],
@@ -116,5 +117,5 @@ class Book:
         return self.__isbn
 
     @isbn.setter
-    def isnb(self, isbn):
+    def isbn(self, isbn):
        self.__isbn = isbn
