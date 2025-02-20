@@ -77,11 +77,12 @@ class Library:
         self.storage.file.seek(33)      # очищаем файл начиная с конца хедера (33)
         self.storage.file.truncate()
 
-        for book in books:                 #
+        for book in books:                 # добавляем заново книги из словаря в файл, перед этим преобразуя в Book
             self.add_book((Book.from_dict(book)))
 
     def get_book_count(self):
-        pass
+        count = self.storage.count_book()
+        return count
 
     def check_book(self, isbn):
         books = self.storage.read_data()
@@ -89,3 +90,7 @@ class Library:
             if item['ISBN'].lower() == isbn.lower():
                 return item['ISBN']
         return None
+
+    def dump_books_data(self, filename):
+        self.storage.dump_books_to_json(filename)
+
