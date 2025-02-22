@@ -2,7 +2,6 @@ import csv
 import os
 import json
 
-
 class CSVStorage:
     def  __init__(self, filename):
         self.filename = filename
